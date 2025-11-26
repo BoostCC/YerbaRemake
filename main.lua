@@ -840,28 +840,36 @@ function library:CreateWindow(options)
     function window:CreateDivider()
         local divider = {}
         
-        -- Get current number of elements for layout order
-        local elementCount = 0
-        for _, child in pairs(library.gui.Holder:GetChildren()) do
-            if child:IsA("Frame") then
-                if child.LayoutOrder > elementCount then
-                    elementCount = child.LayoutOrder
-                end
+        -- Count existing dividers to position this one
+        local dividerCount = 0
+        for _, child in pairs(library.gui.Header:GetChildren()) do
+            if child.Name:find("Divider_") then
+                dividerCount = dividerCount + 1
             end
         end
         
-        -- Create Divider
+        -- Create a visible divider directly in the header
         local DividerFrame = Instance.new("Frame")
-        DividerFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-        DividerFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-        DividerFrame.BackgroundTransparency = 0.5 -- Make it more visible
-        DividerFrame.Name = "Divider_" .. tostring(math.random(1000, 9999)) -- Random name to make it unique
-        DividerFrame.Size = UDim2.new(0, 10, 0, 50) -- Make it wider
-        DividerFrame.BorderSizePixel = 0
+        DividerFrame.Name = "Divider_" .. tostring(math.random(1000, 9999))
+        DividerFrame.Size = UDim2.new(0, 2, 0, 30)
+        DividerFrame.Position = UDim2.new(0, 40 + (dividerCount * 90), 0, 10)
         DividerFrame.BackgroundColor3 = library.config.colors.accent
-        DividerFrame.LayoutOrder = elementCount + 1 -- Set layout order for proper positioning
-        DividerFrame.ZIndex = 15 -- Make sure it's visible
-        DividerFrame.Parent = library.gui.Holder
+        DividerFrame.BorderSizePixel = 0
+        DividerFrame.ZIndex = 15
+        DividerFrame.Parent = library.gui.Header
+        
+        -- Add gradient to divider
+        local UIGradient = Instance.new("UIGradient")
+        UIGradient.Rotation = 90
+        UIGradient.Color = ColorSequence.new{
+            ColorSequenceKeypoint.new(0, library.config.colors.divider[1]),
+            ColorSequenceKeypoint.new(0.495, library.config.colors.divider[2]),
+            ColorSequenceKeypoint.new(1, library.config.colors.divider[3])
+        }
+        UIGradient.Parent = DividerFrame
+        
+        -- Print debug message
+        print("Created divider at position: " .. tostring(DividerFrame.Position))
         
         local Line = Instance.new("Frame")
         Line.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -891,90 +899,37 @@ function library:CreateWindow(options)
         local tabData = {}
         local tabIndex = #tabs + 1
         
-        -- Create Tab Holder
-        local TabHolder = Instance.new("Frame")
-        TabHolder.BorderColor3 = Color3.fromRGB(0, 0, 0)
-        TabHolder.Name = "TabHolder_" .. name -- Add name to make it unique
-        TabHolder.BackgroundTransparency = 0.8 -- Add slight background for visibility
-        TabHolder.Size = UDim2.new(0, 80, 0, 48) -- Make it wider to fit tab names
-        TabHolder.BorderSizePixel = 0
-        TabHolder.BackgroundColor3 = library.config.colors.accent:Lerp(Color3.fromRGB(0, 0, 0), 0.8)
-        TabHolder.LayoutOrder = tabIndex * 2 + 2 -- Set layout order for proper positioning (after logo divider)
-        TabHolder.ZIndex = 15 -- Make sure it's visible
-        TabHolder.Parent = library.gui.Holder
+        -- Create a direct tab button in the header
+        local TabButton = Instance.new("TextButton")
+        TabButton.Name = "Tab_" .. name
+        TabButton.Text = name
+        TabButton.Size = UDim2.new(0, 80, 0, 30)
+        TabButton.Position = UDim2.new(0, 50 + (tabIndex * 90), 0, 10)
+        TabButton.BackgroundColor3 = library.config.colors.accent
+        TabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TabButton.Font = library.config.font
+        TabButton.TextSize = 16
+        TabButton.BorderSizePixel = 1
+        TabButton.BorderColor3 = Color3.fromRGB(255, 255, 255)
+        TabButton.ZIndex = 20
+        TabButton.Parent = library.gui.Header -- Add directly to the header
         
-        -- Add UICorner to make it look better
+        -- Add a UICorner to make it look better
         local UICorner = Instance.new("UICorner")
-        UICorner.CornerRadius = UDim.new(0, 3)
-        UICorner.Parent = TabHolder
+        UICorner.CornerRadius = UDim.new(0, 4)
+        UICorner.Parent = TabButton
         
-        local UIListLayout = Instance.new("UIListLayout")
-        UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-        UIListLayout.Parent = TabHolder
-        
-        local UIPadding = Instance.new("UIPadding")
-        UIPadding.PaddingTop = UDim.new(0, 13)
-        UIPadding.Parent = TabHolder
-        
-        -- Create Tab Name
-        local TabName = Instance.new("TextButton") -- Change to TextButton for better interaction
-        TabName.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-        TabName.TextColor3 = Color3.fromRGB(255, 255, 255) -- Pure white for maximum visibility
-        TabName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-        TabName.Text = name
-        TabName.Name = "TabName"
-        TabName.TextStrokeTransparency = 0
-        TabName.AnchorPoint = Vector2.new(0.5, 0.5)
-        TabName.Size = UDim2.new(0, 70, 0, 30) -- Bigger size for better visibility
-        TabName.BackgroundTransparency = 0.5 -- More visible background
-        TabName.Position = UDim2.new(0.5, 0, 0.5, 0)
-        TabName.BorderSizePixel = 1 -- Add border for better visibility
-        TabName.BorderColor3 = library.config.colors.accent -- Accent color border
-        TabName.TextSize = 16 -- Bigger text
-        TabName.BackgroundColor3 = library.config.colors.accent
-        TabName.ZIndex = 20 -- Make sure it's visible above other elements
-        TabName.Parent = TabHolder
-        
-        -- Print debug message when tab is created
-        print("Created tab: " .. name)
-        
-        -- No need for tweening as we've already positioned it correctly
-        
-        local UIPadding = Instance.new("UIPadding")
-        UIPadding.PaddingRight = UDim.new(0, 6)
-        UIPadding.PaddingLeft = UDim.new(0, 6)
-        UIPadding.Parent = TabName
-        
-        -- Create Tab Container
-        local TabContainer = Instance.new("Frame")
-        TabContainer.BorderColor3 = Color3.fromRGB(0, 0, 0)
-        TabContainer.Name = name.."_Container"
-        TabContainer.BackgroundTransparency = 1
-        TabContainer.Size = UDim2.new(1, 0, 1, 0)
-        TabContainer.BorderSizePixel = 0
-        TabContainer.Visible = false
-        TabContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-        TabContainer.Parent = library.gui.Container
-        
-        local UIListLayout = Instance.new("UIListLayout")
-        UIListLayout.Padding = UDim.new(0, 9)
-        UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-        UIListLayout.FillDirection = Enum.FillDirection.Horizontal
-        UIListLayout.Parent = TabContainer
-        
-        -- Create Tab Liner (indicator for active tab)
+        -- Create a liner under the tab
         local Liner = Instance.new("Frame")
-        Liner.BorderColor3 = Color3.fromRGB(0, 0, 0)
-        Liner.AnchorPoint = Vector2.new(0.5, 1)
         Liner.Name = "Liner"
-        Liner.Position = UDim2.new(0.5, 0, 1, 4)
-        Liner.Size = UDim2.new(1, 1, 0, 2)
-        Liner.BorderSizePixel = 0
-        Liner.AutomaticSize = Enum.AutomaticSize.XY
+        Liner.Size = UDim2.new(1, 0, 0, 2)
+        Liner.Position = UDim2.new(0, 0, 1, 0)
         Liner.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-        Liner.Visible = false
-        Liner.Parent = TabName
+        Liner.BorderSizePixel = 0
+        Liner.ZIndex = 20
+        Liner.Parent = TabButton
         
+        -- Add gradient to liner
         local UIGradient = Instance.new("UIGradient")
         UIGradient.Color = ColorSequence.new{
             ColorSequenceKeypoint.new(0, library.config.colors.divider[1]),
@@ -983,15 +938,52 @@ function library:CreateWindow(options)
         }
         UIGradient.Parent = Liner
         
-        -- Tab Click Functionality
-        TabHolder.InputBegan:Connect(function(input)
-            if input.UserInputType == Enum.UserInputType.MouseButton1 then
-                library:SelectTab(name)
+        -- Create Tab Container
+        local TabContainer = Instance.new("Frame")
+        TabContainer.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        TabContainer.Name = name.."_Container"
+        TabContainer.BackgroundTransparency = 1
+        TabContainer.Size = UDim2.new(1, 0, 1, -50)
+        TabContainer.Position = UDim2.new(0, 0, 0, 50)
+        TabContainer.BorderSizePixel = 0
+        TabContainer.Visible = (tabIndex == 1) -- First tab is visible by default
+        TabContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TabContainer.Parent = library.gui.Page
+        
+        local UIListLayout = Instance.new("UIListLayout")
+        UIListLayout.Padding = UDim.new(0, 9)
+        UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+        UIListLayout.FillDirection = Enum.FillDirection.Horizontal
+        UIListLayout.Parent = TabContainer
+        
+        -- Tab click functionality
+        TabButton.MouseButton1Click:Connect(function()
+            -- Hide all tab containers
+            for _, tab in pairs(tabs) do
+                if tab.container then
+                    tab.container.Visible = false
+                end
             end
+            
+            -- Show this tab container
+            TabContainer.Visible = true
+            
+            -- Update tab colors
+            for _, tab in pairs(tabs) do
+                if tab.button then
+                    tab.button.BackgroundColor3 = library.config.colors.accent:Lerp(Color3.fromRGB(0, 0, 0), 0.7)
+                end
+            end
+            
+            -- Highlight this tab
+            TabButton.BackgroundColor3 = library.config.colors.accent
+            
+            -- Update current tab
+            currentTab = name
         end)
         
-        -- Tab Functions
-        function tabData:CreateSection(options)
+        -- Add tab data
+        tabData.CreateSection = function(options)
             local sectionOptions = type(options) == "table" and options or {SectionText = options}
             local sectionName = sectionOptions.SectionText or "Section"
             local position = sectionOptions.position or "left"
@@ -1004,6 +996,71 @@ function library:CreateWindow(options)
             -- Create Section
             local Section = Instance.new("Frame")
             Section.ClipsDescendants = true
+            Section.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Section.Name = sectionName.."_Section"
+            Section.BackgroundTransparency = 0.6499999761581421
+            Section.Size = UDim2.new(0, 264, 0, 40)
+            Section.BorderSizePixel = 0
+            Section.AutomaticSize = Enum.AutomaticSize.Y
+            Section.BackgroundColor3 = library.config.colors.section
+            
+            -- Position based on left/right
+            if position == "left" then
+                Section.LayoutOrder = 1
+            else
+                Section.LayoutOrder = 2
+            end
+            
+            Section.Parent = TabContainer
+            
+            -- Create section header and content
+            -- (Add your section implementation here)
+            
+            return sectionData
+        end
+        
+        -- Store tab data
+        tabs[tabIndex] = {
+            name = name,
+            button = TabButton,
+            container = TabContainer
+        }
+        
+        return tabData
+    end
+    
+    -- SelectTab Function
+    function library:SelectTab(tabName)
+        for _, tab in pairs(tabs) do
+            if tab.name == tabName then
+                -- Show this tab container
+                if tab.container then
+                    tab.container.Visible = true
+                end
+                
+                -- Highlight this tab
+                if tab.button then
+                    tab.button.BackgroundColor3 = library.config.colors.accent
+                end
+            else
+                -- Hide other tab containers
+                if tab.container then
+                    tab.container.Visible = false
+                end
+                
+                -- Dim other tabs
+                if tab.button then
+                    tab.button.BackgroundColor3 = library.config.colors.accent:Lerp(Color3.fromRGB(0, 0, 0), 0.7)
+                end
+            end
+        end
+        
+        -- Update current tab
+        currentTab = tabName
+    end
+    
+    -- Return the library
+    return library
             Section.BorderColor3 = Color3.fromRGB(0, 0, 0)
             Section.Name = sectionName.."_Section"
             Section.BackgroundTransparency = 0.6499999761581421
