@@ -167,7 +167,7 @@ Divider.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Divider.AnchorPoint = Vector2.new(0.5, 0.5)
 Divider.BackgroundTransparency = 1
 Divider.Position = UDim2.new(0.5, 0, 0.5, 0)
-Divider.Name = "Divider"
+Divider.Name = "Divider_Logo" -- Special name for the logo divider
 Divider.Size = UDim2.new(0, 2, 0, 50)
 Divider.BorderSizePixel = 0
 Divider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -820,7 +820,7 @@ function library:CreateWindow(options)
     
     -- Clear any example elements from the UI template
     for _, child in pairs(gui.Holder:GetChildren()) do
-        if child:IsA("Frame") and child.Name == "TabHolder" then
+        if child:IsA("Frame") and (child.Name == "TabHolder" or (child.Name == "Divider" and child.Name ~= "Divider_Logo")) then
             child:Destroy()
         end
     end
@@ -830,6 +830,44 @@ function library:CreateWindow(options)
         if child:IsA("Frame") and (child.Name == "Section_Left" or child.Name == "Section_Right") then
             child:Destroy()
         end
+    end
+    
+    -- Create Divider Function
+    function window:CreateDivider()
+        local divider = {}
+        
+        -- Create Divider
+        local DividerFrame = Instance.new("Frame")
+        DividerFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        DividerFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+        DividerFrame.BackgroundTransparency = 1
+        DividerFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+        DividerFrame.Name = "Divider_" .. tostring(math.random(1000, 9999)) -- Random name to make it unique
+        DividerFrame.Size = UDim2.new(0, 2, 0, 50)
+        DividerFrame.BorderSizePixel = 0
+        DividerFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        DividerFrame.Parent = library.gui.Holder
+        
+        local Line = Instance.new("Frame")
+        Line.AnchorPoint = Vector2.new(0.5, 0.5)
+        Line.Name = "Line"
+        Line.Position = UDim2.new(0.5, 0, 0.5, 0)
+        Line.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        Line.Size = UDim2.new(0.05263157933950424, 1, 0.30399537086486816, 1)
+        Line.BorderSizePixel = 0
+        Line.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Line.Parent = DividerFrame
+        
+        local UIGradient = Instance.new("UIGradient")
+        UIGradient.Rotation = 90
+        UIGradient.Color = ColorSequence.new{
+            ColorSequenceKeypoint.new(0, library.config.colors.divider[1]),
+            ColorSequenceKeypoint.new(0.495, library.config.colors.divider[2]),
+            ColorSequenceKeypoint.new(1, library.config.colors.divider[3])
+        }
+        UIGradient.Parent = Line
+        
+        return divider
     end
     
     -- Tab Creation Function
@@ -846,6 +884,10 @@ function library:CreateWindow(options)
         TabHolder.BorderSizePixel = 0
         TabHolder.AutomaticSize = Enum.AutomaticSize.XY
         TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        
+        -- Calculate position based on existing tabs
+        local xPosition = 0.2 + (tabIndex * 0.1) -- Adjust this formula as needed
+        TabHolder.Position = UDim2.new(xPosition, 0, 0, 0)
         TabHolder.Parent = library.gui.Holder
         
         local UIListLayout = Instance.new("UIListLayout")
@@ -873,6 +915,8 @@ function library:CreateWindow(options)
         TabName.TextSize = library.config.textSize
         TabName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         TabName.Parent = TabHolder
+        
+        -- No need for tweening as we've already positioned it correctly
         
         local UIPadding = Instance.new("UIPadding")
         UIPadding.PaddingRight = UDim.new(0, 6)
