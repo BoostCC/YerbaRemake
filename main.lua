@@ -171,6 +171,7 @@ Divider.Name = "Divider_Logo" -- Special name for the logo divider
 Divider.Size = UDim2.new(0, 2, 0, 50)
 Divider.BorderSizePixel = 0
 Divider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Divider.LayoutOrder = 1 -- Set layout order for proper positioning
 Divider.Parent = Holder
 
 local Line = Instance.new("Frame")
@@ -839,34 +840,26 @@ function library:CreateWindow(options)
     function window:CreateDivider()
         local divider = {}
         
-        -- Create Divider
-        local DividerFrame = Instance.new("Frame")
-        DividerFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-        DividerFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-        DividerFrame.BackgroundTransparency = 1
-        
-        -- Get the last element in the Holder to position this divider after it
-        local lastPos = 0.15 -- Default position after logo divider
-        local lastWidth = 0
-        
+        -- Get current number of elements for layout order
+        local elementCount = 0
         for _, child in pairs(library.gui.Holder:GetChildren()) do
-            if child:IsA("Frame") and child ~= DividerFrame then
-                local childPos = child.Position.X.Scale
-                local childSize = child.Size.X.Offset
-                
-                if childPos > lastPos then
-                    lastPos = childPos
-                    lastWidth = childSize
+            if child:IsA("Frame") then
+                if child.LayoutOrder > elementCount then
+                    elementCount = child.LayoutOrder
                 end
             end
         end
         
-        -- Position after the last element
-        DividerFrame.Position = UDim2.new(lastPos + (lastWidth/500) + 0.02, 0, 0.5, 0)
+        -- Create Divider
+        local DividerFrame = Instance.new("Frame")
+        DividerFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        DividerFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+        DividerFrame.BackgroundTransparency = 0.5 -- Make it more visible
         DividerFrame.Name = "Divider_" .. tostring(math.random(1000, 9999)) -- Random name to make it unique
-        DividerFrame.Size = UDim2.new(0, 2, 0, 50)
+        DividerFrame.Size = UDim2.new(0, 10, 0, 50) -- Make it wider
         DividerFrame.BorderSizePixel = 0
-        DividerFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        DividerFrame.BackgroundColor3 = library.config.colors.accent
+        DividerFrame.LayoutOrder = elementCount + 1 -- Set layout order for proper positioning
         DividerFrame.ZIndex = 15 -- Make sure it's visible
         DividerFrame.Parent = library.gui.Holder
         
@@ -875,7 +868,7 @@ function library:CreateWindow(options)
         Line.Name = "Line"
         Line.Position = UDim2.new(0.5, 0, 0.5, 0)
         Line.BorderColor3 = Color3.fromRGB(0, 0, 0)
-        Line.Size = UDim2.new(0.5, 1, 0.5, 1) -- Make the line bigger
+        Line.Size = UDim2.new(0, 4, 0, 30) -- Fixed size for better visibility
         Line.BorderSizePixel = 0
         Line.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         Line.ZIndex = 16 -- Make sure it's visible above the divider frame
@@ -902,32 +895,18 @@ function library:CreateWindow(options)
         local TabHolder = Instance.new("Frame")
         TabHolder.BorderColor3 = Color3.fromRGB(0, 0, 0)
         TabHolder.Name = "TabHolder_" .. name -- Add name to make it unique
-        TabHolder.BackgroundTransparency = 1
-        TabHolder.Size = UDim2.new(0, 70, 0, 48) -- Make it wider to fit tab names
+        TabHolder.BackgroundTransparency = 0.8 -- Add slight background for visibility
+        TabHolder.Size = UDim2.new(0, 80, 0, 48) -- Make it wider to fit tab names
         TabHolder.BorderSizePixel = 0
-        TabHolder.AutomaticSize = Enum.AutomaticSize.XY
-        TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-        
-        -- Get the last element in the Holder to position this tab after it
-        local lastPos = 0.15 -- Default position after logo divider
-        local lastWidth = 0
-        
-        for _, child in pairs(library.gui.Holder:GetChildren()) do
-            if child:IsA("Frame") and child ~= TabHolder then
-                local childPos = child.Position.X.Scale
-                local childSize = child.Size.X.Offset
-                
-                if childPos > lastPos then
-                    lastPos = childPos
-                    lastWidth = childSize
-                end
-            end
-        end
-        
-        -- Position after the last element with a small gap
-        TabHolder.Position = UDim2.new(lastPos + (lastWidth/500) + 0.05, 0, 0, 0)
+        TabHolder.BackgroundColor3 = library.config.colors.accent:Lerp(Color3.fromRGB(0, 0, 0), 0.8)
+        TabHolder.LayoutOrder = tabIndex * 2 + 2 -- Set layout order for proper positioning (after logo divider)
         TabHolder.ZIndex = 15 -- Make sure it's visible
         TabHolder.Parent = library.gui.Holder
+        
+        -- Add UICorner to make it look better
+        local UICorner = Instance.new("UICorner")
+        UICorner.CornerRadius = UDim.new(0, 3)
+        UICorner.Parent = TabHolder
         
         local UIListLayout = Instance.new("UIListLayout")
         UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
@@ -939,19 +918,20 @@ function library:CreateWindow(options)
         
         -- Create Tab Name
         local TabName = Instance.new("TextButton") -- Change to TextButton for better interaction
-        TabName.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-        TabName.TextColor3 = library.config.colors.textDimmed -- Default to dimmed
+        TabName.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+        TabName.TextColor3 = Color3.fromRGB(255, 255, 255) -- Pure white for maximum visibility
         TabName.BorderColor3 = Color3.fromRGB(0, 0, 0)
         TabName.Text = name
         TabName.Name = "TabName"
-        TabName.TextStrokeTransparency = 0.5
+        TabName.TextStrokeTransparency = 0
         TabName.AnchorPoint = Vector2.new(0.5, 0.5)
-        TabName.Size = UDim2.new(0, 60, 0, 25) -- Fixed size for better visibility
-        TabName.BackgroundTransparency = 0.9 -- Slight background for visibility
+        TabName.Size = UDim2.new(0, 70, 0, 30) -- Bigger size for better visibility
+        TabName.BackgroundTransparency = 0.5 -- More visible background
         TabName.Position = UDim2.new(0.5, 0, 0.5, 0)
-        TabName.BorderSizePixel = 0
-        TabName.TextSize = library.config.textSize
-        TabName.BackgroundColor3 = library.config.colors.accent:Lerp(Color3.fromRGB(0, 0, 0), 0.7)
+        TabName.BorderSizePixel = 1 -- Add border for better visibility
+        TabName.BorderColor3 = library.config.colors.accent -- Accent color border
+        TabName.TextSize = 16 -- Bigger text
+        TabName.BackgroundColor3 = library.config.colors.accent
         TabName.ZIndex = 20 -- Make sure it's visible above other elements
         TabName.Parent = TabHolder
         
