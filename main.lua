@@ -1000,6 +1000,13 @@ function library:CreateWindow(options)
     local gui = createBaseGui()
     library.gui = gui
     
+    -- Clear any example tabs from the UI template
+    for _, child in pairs(gui.Holder:GetChildren()) do
+        if child:IsA("Frame") and child.Name == "TabHolder" then
+            child:Destroy()
+        end
+    end
+    
     -- Tab Creation Function
     function window:CreateTab(name)
         local tabData = {}
@@ -1100,6 +1107,8 @@ function library:CreateWindow(options)
             local subTabs = sectionOptions.SubTabs or {}
             
             local sectionData = {}
+            -- Store subtab data
+            local subTabsData = {}
             
             -- Create Section
             local Section = Instance.new("Frame")
@@ -1203,6 +1212,7 @@ function library:CreateWindow(options)
             
             -- Create SubTabs if specified
             if #subTabs > 0 then
+                -- Create SubHolder for the tabs themselves
                 local SubHolder = Instance.new("Frame")
                 SubHolder.BorderColor3 = Color3.fromRGB(0, 0, 0)
                 SubHolder.AnchorPoint = Vector2.new(1, 0.5)
@@ -1226,10 +1236,22 @@ function library:CreateWindow(options)
                 UIPadding.PaddingRight = UDim.new(0, 6)
                 UIPadding.Parent = SubHolder
                 
+                -- Create a container for all subtab content
+                local SubTabsContainer = Instance.new("Frame")
+                SubTabsContainer.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                SubTabsContainer.Name = "SubTabsContainer"
+                SubTabsContainer.BackgroundTransparency = 1
+                SubTabsContainer.Size = UDim2.new(1, 0, 0, 0)
+                SubTabsContainer.BorderSizePixel = 0
+                SubTabsContainer.AutomaticSize = Enum.AutomaticSize.Y
+                SubTabsContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                SubTabsContainer.Parent = Holder
+                
                 -- Create SubTab holders
                 for i, subTabName in ipairs(subTabs) do
                     local isActive = (i == 1)
                     
+                    -- Create the subtab button in the SubHolder
                     local SectionSubTab = Instance.new("Frame")
                     SectionSubTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
                     SectionSubTab.Name = "SectionSubTab"
@@ -1265,17 +1287,17 @@ function library:CreateWindow(options)
                     UIPadding.PaddingTop = UDim.new(0, 6)
                     UIPadding.Parent = SectionSubTab
                     
-                    -- Add SubTab content holder
+                    -- Create the content container for this subtab
                     local SubTabContent = Instance.new("Frame")
                     SubTabContent.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                    SubTabContent.Name = subTabName
+                    SubTabContent.Name = subTabName .. "Content"
                     SubTabContent.BackgroundTransparency = 1
                     SubTabContent.Size = UDim2.new(1, 0, 0, 0)
                     SubTabContent.BorderSizePixel = 0
                     SubTabContent.AutomaticSize = Enum.AutomaticSize.Y
                     SubTabContent.Visible = isActive
                     SubTabContent.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                    SubTabContent.Parent = Holder
+                    SubTabContent.Parent = SubTabsContainer
                     
                     local UIListLayout = Instance.new("UIListLayout")
                     UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
@@ -1284,38 +1306,72 @@ function library:CreateWindow(options)
                     -- SubTab click functionality
                     SectionSubTab.InputBegan:Connect(function(input)
                         if input.UserInputType == Enum.UserInputType.MouseButton1 then
-                            -- Hide all subtabs
-                            for _, child in pairs(Holder:GetChildren()) do
-                                if child:IsA("Frame") and child.Name ~= "UIListLayout" and child.Name ~= "UIPadding" then
+                            -- Hide all subtab content
+                            for _, child in pairs(SubTabsContainer:GetChildren()) do
+                                if child:IsA("Frame") and child.Name:find("Content") then
                                     child.Visible = false
                                 end
                             end
                             
-                            -- Show this subtab
+                            -- Show this subtab content
                             SubTabContent.Visible = true
                             
-                            -- Update colors
+                            -- Update colors of tab buttons
                             for _, otherSubTab in pairs(SubHolder:GetChildren()) do
                                 if otherSubTab:IsA("Frame") and otherSubTab.Name == "SectionSubTab" then
-                                    otherSubTab.SubtabName.TextColor3 = Color3.fromRGB(133, 133, 133)
+                                    local label = otherSubTab:FindFirstChild("SubtabName")
+                                    if label then
+                                        label.TextColor3 = Color3.fromRGB(133, 133, 133)
+                                    end
                                 end
                             end
                             SubtabName.TextColor3 = Color3.fromRGB(180, 180, 180)
                         end
                     end)
                     
-                    -- Add the subtab to section data
-                    sectionData[subTabName] = {
-                        CreateToggle = function(options) end,
-                        CreateSlider = function(options) end,
-                        CreateDropdown = function(options) end,
-                        CreateButton = function(options) end,
-                        CreateLabel = function(options) end,
-                        CreateTextInput = function(options) end,
-                        CreateKeybind = function(options) end,
-                        CreateColorpicker = function(options) end,
-                        AddColorToggle = function(name, default, callback) end
+                    -- Create the subtab data with element creation functions
+                    local subTabData = {
+                        CreateToggle = function(options) 
+                            -- Toggle implementation
+                            return {}
+                        end,
+                        CreateSlider = function(options) 
+                            -- Slider implementation
+                            return {}
+                        end,
+                        CreateDropdown = function(options) 
+                            -- Dropdown implementation
+                            return {}
+                        end,
+                        CreateButton = function(options) 
+                            -- Button implementation
+                            return {}
+                        end,
+                        CreateLabel = function(options) 
+                            -- Label implementation
+                            return {}
+                        end,
+                        CreateTextInput = function(options) 
+                            -- TextInput implementation
+                            return {}
+                        end,
+                        CreateKeybind = function(options) 
+                            -- Keybind implementation
+                            return {}
+                        end,
+                        CreateColorpicker = function(options) 
+                            -- Colorpicker implementation
+                            return {}
+                        end,
+                        AddColorToggle = function(name, default, callback) 
+                            -- ColorToggle implementation
+                            return {}
+                        end,
+                        _frame = SubTabContent -- Store reference to the frame
                     }
+                    
+                    -- Store the subtab data
+                    subTabsData[subTabName] = subTabData
                 end
             else
                 -- If no subtabs, create a default content holder
@@ -1339,6 +1395,13 @@ function library:CreateWindow(options)
                 frame = Section,
                 holder = Holder
             }
+            
+            -- Add subtabs to the section data if they exist
+            if #subTabs > 0 then
+                for name, data in pairs(subTabsData) do
+                    sectionData[name] = data
+                end
+            end
             
             return sectionData
         end
