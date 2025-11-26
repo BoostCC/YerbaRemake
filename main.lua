@@ -820,10 +820,13 @@ function library:CreateWindow(options)
     
     -- Clear any example elements from the UI template
     for _, child in pairs(gui.Holder:GetChildren()) do
-        if child:IsA("Frame") and (child.Name == "TabHolder" or (child.Name == "Divider" and child.Name ~= "Divider_Logo")) then
+        if child:IsA("Frame") and (child.Name:find("TabHolder") or (child.Name == "Divider" and child.Name ~= "Divider_Logo")) then
             child:Destroy()
         end
     end
+    
+    -- Print a debug message to confirm the UI is being created
+    print("Yerba UI Library initialized")
     
     -- Clear any example sections from the Container
     for _, child in pairs(gui.Container:GetChildren()) do
@@ -841,11 +844,30 @@ function library:CreateWindow(options)
         DividerFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
         DividerFrame.AnchorPoint = Vector2.new(0.5, 0.5)
         DividerFrame.BackgroundTransparency = 1
-        DividerFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+        
+        -- Get the last element in the Holder to position this divider after it
+        local lastPos = 0.15 -- Default position after logo divider
+        local lastWidth = 0
+        
+        for _, child in pairs(library.gui.Holder:GetChildren()) do
+            if child:IsA("Frame") and child ~= DividerFrame then
+                local childPos = child.Position.X.Scale
+                local childSize = child.Size.X.Offset
+                
+                if childPos > lastPos then
+                    lastPos = childPos
+                    lastWidth = childSize
+                end
+            end
+        end
+        
+        -- Position after the last element
+        DividerFrame.Position = UDim2.new(lastPos + (lastWidth/500) + 0.02, 0, 0.5, 0)
         DividerFrame.Name = "Divider_" .. tostring(math.random(1000, 9999)) -- Random name to make it unique
         DividerFrame.Size = UDim2.new(0, 2, 0, 50)
         DividerFrame.BorderSizePixel = 0
         DividerFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        DividerFrame.ZIndex = 15 -- Make sure it's visible
         DividerFrame.Parent = library.gui.Holder
         
         local Line = Instance.new("Frame")
@@ -853,9 +875,10 @@ function library:CreateWindow(options)
         Line.Name = "Line"
         Line.Position = UDim2.new(0.5, 0, 0.5, 0)
         Line.BorderColor3 = Color3.fromRGB(0, 0, 0)
-        Line.Size = UDim2.new(0.05263157933950424, 1, 0.30399537086486816, 1)
+        Line.Size = UDim2.new(0.5, 1, 0.5, 1) -- Make the line bigger
         Line.BorderSizePixel = 0
         Line.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Line.ZIndex = 16 -- Make sure it's visible above the divider frame
         Line.Parent = DividerFrame
         
         local UIGradient = Instance.new("UIGradient")
@@ -880,14 +903,30 @@ function library:CreateWindow(options)
         TabHolder.BorderColor3 = Color3.fromRGB(0, 0, 0)
         TabHolder.Name = "TabHolder_" .. name -- Add name to make it unique
         TabHolder.BackgroundTransparency = 1
-        TabHolder.Size = UDim2.new(0, 33, 0, 48)
+        TabHolder.Size = UDim2.new(0, 70, 0, 48) -- Make it wider to fit tab names
         TabHolder.BorderSizePixel = 0
         TabHolder.AutomaticSize = Enum.AutomaticSize.XY
         TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         
-        -- Calculate position based on existing tabs
-        local xPosition = 0.2 + (tabIndex * 0.1) -- Adjust this formula as needed
-        TabHolder.Position = UDim2.new(xPosition, 0, 0, 0)
+        -- Get the last element in the Holder to position this tab after it
+        local lastPos = 0.15 -- Default position after logo divider
+        local lastWidth = 0
+        
+        for _, child in pairs(library.gui.Holder:GetChildren()) do
+            if child:IsA("Frame") and child ~= TabHolder then
+                local childPos = child.Position.X.Scale
+                local childSize = child.Size.X.Offset
+                
+                if childPos > lastPos then
+                    lastPos = childPos
+                    lastWidth = childSize
+                end
+            end
+        end
+        
+        -- Position after the last element with a small gap
+        TabHolder.Position = UDim2.new(lastPos + (lastWidth/500) + 0.05, 0, 0, 0)
+        TabHolder.ZIndex = 15 -- Make sure it's visible
         TabHolder.Parent = library.gui.Holder
         
         local UIListLayout = Instance.new("UIListLayout")
@@ -899,7 +938,7 @@ function library:CreateWindow(options)
         UIPadding.Parent = TabHolder
         
         -- Create Tab Name
-        local TabName = Instance.new("TextLabel")
+        local TabName = Instance.new("TextButton") -- Change to TextButton for better interaction
         TabName.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
         TabName.TextColor3 = library.config.colors.textDimmed -- Default to dimmed
         TabName.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -907,14 +946,17 @@ function library:CreateWindow(options)
         TabName.Name = "TabName"
         TabName.TextStrokeTransparency = 0.5
         TabName.AnchorPoint = Vector2.new(0.5, 0.5)
-        TabName.Size = UDim2.new(0, 1, 0, 1)
-        TabName.BackgroundTransparency = 1
+        TabName.Size = UDim2.new(0, 60, 0, 25) -- Fixed size for better visibility
+        TabName.BackgroundTransparency = 0.9 -- Slight background for visibility
         TabName.Position = UDim2.new(0.5, 0, 0.5, 0)
         TabName.BorderSizePixel = 0
-        TabName.AutomaticSize = Enum.AutomaticSize.XY
         TabName.TextSize = library.config.textSize
-        TabName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TabName.BackgroundColor3 = library.config.colors.accent:Lerp(Color3.fromRGB(0, 0, 0), 0.7)
+        TabName.ZIndex = 20 -- Make sure it's visible above other elements
         TabName.Parent = TabHolder
+        
+        -- Print debug message when tab is created
+        print("Created tab: " .. name)
         
         -- No need for tweening as we've already positioned it correctly
         
