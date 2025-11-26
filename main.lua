@@ -160,189 +160,7 @@ UIGradient.Color = ColorSequence.new{
 }
 UIGradient.Parent = Line
 
-local TabHolder = Instance.new("Frame")
-TabHolder.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TabHolder.Name = "TabHolder"
-TabHolder.BackgroundTransparency = 1
-TabHolder.Position = UDim2.new(0.5357142686843872, 0, 0, 0)
-TabHolder.Size = UDim2.new(0, 33, 0, 48)
-TabHolder.BorderSizePixel = 0
-TabHolder.AutomaticSize = Enum.AutomaticSize.XY
-TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TabHolder.Parent = Holder
-
-local TabName = Instance.new("TextLabel")
-TabName.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-TabName.TextColor3 = Color3.fromRGB(255, 255, 255)
-TabName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TabName.Text = "ExampleTab"
-TabName.Name = "TabName"
-TabName.TextStrokeTransparency = 0.5
-TabName.AnchorPoint = Vector2.new(0.5, 0.5)
-TabName.Size = UDim2.new(0, 1, 0, 1)
-TabName.BackgroundTransparency = 1
-TabName.Position = UDim2.new(0.5, 0, 0.5, 0)
-TabName.BorderSizePixel = 0
-TabName.AutomaticSize = Enum.AutomaticSize.XY
-TabName.TextSize = 14
-TabName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TabName.Parent = TabHolder
-
-local Liner = Instance.new("Frame")
-Liner.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Liner.AnchorPoint = Vector2.new(0.5, 1)
-Liner.Name = "Liner"
-Liner.Position = UDim2.new(0.5, 0, 1, 4)
-Liner.Size = UDim2.new(1, 1, 0, 2)
-Liner.BorderSizePixel = 0
-Liner.AutomaticSize = Enum.AutomaticSize.XY
-Liner.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Liner.Parent = TabName
-
-local UIGradient = Instance.new("UIGradient")
-UIGradient.Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(27, 57, 73)),
-	ColorSequenceKeypoint.new(0.495, Color3.fromRGB(38, 81, 103)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(27, 57, 73))
-}
-UIGradient.Parent = Liner
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingTop = UDim.new(0, 2)
-UIPadding.PaddingRight = UDim.new(0, 6)
-UIPadding.PaddingLeft = UDim.new(0, 6)
-UIPadding.Parent = TabName
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Parent = TabHolder
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingTop = UDim.new(0, 13)
-UIPadding.Parent = TabHolder
-
-local TabHolder = Instance.new("Frame")
-TabHolder.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TabHolder.Name = "TabHolder"
-TabHolder.BackgroundTransparency = 1
-TabHolder.Position = UDim2.new(0.6857143044471741, 0, 0, 0)
-TabHolder.Size = UDim2.new(0, 33, 0, 48)
-TabHolder.BorderSizePixel = 0
-TabHolder.AutomaticSize = Enum.AutomaticSize.XY
-TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TabHolder.Parent = Holder
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Parent = TabHolder
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingTop = UDim.new(0, 16)
-UIPadding.Parent = TabHolder
-
-local TabName = Instance.new("TextLabel")
-TabName.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-TabName.TextColor3 = Color3.fromRGB(128, 128, 128)
-TabName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TabName.Text = "ExampleTab"
-TabName.Name = "TabName"
-TabName.TextStrokeTransparency = 0.5
-TabName.AnchorPoint = Vector2.new(0.5, 0.5)
-TabName.Size = UDim2.new(0, 1, 0, 1)
-TabName.BackgroundTransparency = 1
-TabName.Position = UDim2.new(0.5405405163764954, 0, 8.03125, 0)
-TabName.BorderSizePixel = 0
-TabName.AutomaticSize = Enum.AutomaticSize.XY
-TabName.TextSize = 14
-TabName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TabName.Parent = TabHolder
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingRight = UDim.new(0, 6)
-UIPadding.PaddingLeft = UDim.new(0, 6)
-UIPadding.Parent = TabName
-
-local TabHolder = Instance.new("Frame")
-TabHolder.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TabHolder.Name = "TabHolder"
-TabHolder.BackgroundTransparency = 1
-TabHolder.Position = UDim2.new(0.6857143044471741, 0, 0, 0)
-TabHolder.Size = UDim2.new(0, 33, 0, 48)
-TabHolder.BorderSizePixel = 0
-TabHolder.AutomaticSize = Enum.AutomaticSize.XY
-TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TabHolder.Parent = Holder
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Parent = TabHolder
-
-local TabName = Instance.new("TextLabel")
-TabName.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-TabName.TextColor3 = Color3.fromRGB(128, 128, 128)
-TabName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TabName.Text = "ExampleTab"
-TabName.Name = "TabName"
-TabName.TextStrokeTransparency = 0.5
-TabName.AnchorPoint = Vector2.new(0.5, 0.5)
-TabName.Size = UDim2.new(0, 1, 0, 1)
-TabName.BackgroundTransparency = 1
-TabName.Position = UDim2.new(0.5, 0, 0.5, 0)
-TabName.BorderSizePixel = 0
-TabName.AutomaticSize = Enum.AutomaticSize.XY
-TabName.TextSize = 14
-TabName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TabName.Parent = TabHolder
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingRight = UDim.new(0, 6)
-UIPadding.PaddingLeft = UDim.new(0, 6)
-UIPadding.Parent = TabName
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingTop = UDim.new(0, 16)
-UIPadding.Parent = TabHolder
-
-local TabHolder = Instance.new("Frame")
-TabHolder.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TabHolder.Name = "TabHolder"
-TabHolder.BackgroundTransparency = 1
-TabHolder.Position = UDim2.new(0.8795180916786194, 0, 0, 0)
-TabHolder.Size = UDim2.new(0, 52, 0, 48)
-TabHolder.BorderSizePixel = 0
-TabHolder.AutomaticSize = Enum.AutomaticSize.XY
-TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TabHolder.Parent = Holder
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Parent = TabHolder
-
-local TabName = Instance.new("TextLabel")
-TabName.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-TabName.TextColor3 = Color3.fromRGB(128, 128, 128)
-TabName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TabName.Text = "ExampleTab"
-TabName.Name = "TabName"
-TabName.TextStrokeTransparency = 0.5
-TabName.AnchorPoint = Vector2.new(0.5, 0.5)
-TabName.Size = UDim2.new(0, 1, 0, 1)
-TabName.BackgroundTransparency = 1
-TabName.Position = UDim2.new(0.5, 0, 0.5, 0)
-TabName.BorderSizePixel = 0
-TabName.AutomaticSize = Enum.AutomaticSize.XY
-TabName.TextSize = 14
-TabName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TabName.Parent = TabHolder
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingRight = UDim.new(0, 6)
-UIPadding.PaddingLeft = UDim.new(0, 6)
-UIPadding.Parent = TabName
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingTop = UDim.new(0, 16)
-UIPadding.Parent = TabHolder
+-- No example tabs here - they will be created dynamically
 
 local Divider = Instance.new("Frame")
 Divider.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1000,9 +818,16 @@ function library:CreateWindow(options)
     local gui = createBaseGui()
     library.gui = gui
     
-    -- Clear any example tabs from the UI template
+    -- Clear any example elements from the UI template
     for _, child in pairs(gui.Holder:GetChildren()) do
         if child:IsA("Frame") and child.Name == "TabHolder" then
+            child:Destroy()
+        end
+    end
+    
+    -- Clear any example sections from the Container
+    for _, child in pairs(gui.Container:GetChildren()) do
+        if child:IsA("Frame") and (child.Name == "Section_Left" or child.Name == "Section_Right") then
             child:Destroy()
         end
     end
@@ -1015,7 +840,7 @@ function library:CreateWindow(options)
         -- Create Tab Holder
         local TabHolder = Instance.new("Frame")
         TabHolder.BorderColor3 = Color3.fromRGB(0, 0, 0)
-        TabHolder.Name = "TabHolder"
+        TabHolder.Name = "TabHolder_" .. name -- Add name to make it unique
         TabHolder.BackgroundTransparency = 1
         TabHolder.Size = UDim2.new(0, 33, 0, 48)
         TabHolder.BorderSizePixel = 0
