@@ -38,759 +38,246 @@ local function createBaseGui()
     ScreenGui.ResetOnSpawn = false
     ScreenGui.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
-
-local MainFrame = Instance.new("Frame")
-MainFrame.ClipsDescendants = true
-MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-MainFrame.Name = "MainFrame"
-MainFrame.Position = UDim2.new(0.26230770349502563, 0, 0.5, 0)
-MainFrame.Size = UDim2.new(0, 560, 0, 488)
-MainFrame.BorderSizePixel = 0
-MainFrame.BackgroundColor3 = Color3.fromRGB(12, 12, 12)
-MainFrame.Parent = ScreenGui
-
-local Header = Instance.new("Frame")
-Header.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Header.AnchorPoint = Vector2.new(0.5, 0)
-Header.Name = "Header"
-Header.Position = UDim2.new(0.5, 0, 0, 0)
-Header.Size = UDim2.new(0, 560, 0, 50)
-Header.ZIndex = 15
-Header.BorderSizePixel = 0
-Header.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Header.Parent = MainFrame
-
-local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(0, 3)
-UICorner.Parent = Header
-
-local UIGradient = Instance.new("UIGradient")
-UIGradient.Rotation = 90
-UIGradient.Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(31, 31, 31)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(20, 20, 20))
-}
-UIGradient.Parent = Header
-
-local Liner = Instance.new("Frame")
-Liner.AnchorPoint = Vector2.new(0, 1)
-Liner.Name = "Liner"
-Liner.Position = UDim2.new(0, 0, 1, 0)
-Liner.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Liner.Size = UDim2.new(1, 1, 0, 2)
-Liner.BorderSizePixel = 0
-Liner.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Liner.Parent = Header
-
-local UIGradient = Instance.new("UIGradient")
-UIGradient.Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(27, 57, 73)),
-	ColorSequenceKeypoint.new(0.495, Color3.fromRGB(38, 81, 103)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(27, 57, 73))
-}
-UIGradient.Parent = Liner
-
-local Holder = Instance.new("Frame")
-Holder.BackgroundTransparency = 1
-Holder.Name = "Holder"
-Holder.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Holder.Size = UDim2.new(0, 332, 0, 50)
-Holder.BorderSizePixel = 0
-Holder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Holder.Parent = Header
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.Padding = UDim.new(0, 6)
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.FillDirection = Enum.FillDirection.Horizontal
-UIListLayout.Parent = Holder
-
-local LibaryLogo = Instance.new("Frame")
-LibaryLogo.BorderColor3 = Color3.fromRGB(0, 0, 0)
-LibaryLogo.AnchorPoint = Vector2.new(0, 0.5)
-LibaryLogo.BackgroundTransparency = 1
-LibaryLogo.Position = UDim2.new(0, 0, 0.47999998927116394, 0)
-LibaryLogo.Name = "LibaryLogo"
-LibaryLogo.Size = UDim2.new(0, 32, 0, 48)
-LibaryLogo.BorderSizePixel = 0
-LibaryLogo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-LibaryLogo.Parent = Holder
-
-local Logo = Instance.new("ImageLabel")
-Logo.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Logo.Name = "Logo"
-Logo.AnchorPoint = Vector2.new(0.5, 0.5)
-Logo.Image = "rbxassetid://91936638224609"
-Logo.BackgroundTransparency = 1
-Logo.Position = UDim2.new(0.5, 0, 0.5, 0)
-
-Logo.Size = UDim2.new(0, 32, 0, 32)
-Logo.BorderSizePixel = 0
-Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Logo.Parent = LibaryLogo
-
-local Divider = Instance.new("Frame")
-Divider.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Divider.AnchorPoint = Vector2.new(0.5, 0.5)
-Divider.BackgroundTransparency = 1
-Divider.Position = UDim2.new(0.16566264629364014, 0, 0.5, 0)
-Divider.Name = "Divider"
-Divider.Size = UDim2.new(0, 2, 0, 50)
-Divider.BorderSizePixel = 0
-Divider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Divider.Parent = Holder
-
-local Line = Instance.new("Frame")
-Line.AnchorPoint = Vector2.new(0.5, 0.5)
-Line.Name = "Line"
-Line.Position = UDim2.new(0.5, 0, 0.5, 0)
-Line.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Line.Size = UDim2.new(0.05263157933950424, 1, 0.30399537086486816, 1)
-Line.BorderSizePixel = 0
-Line.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Line.Parent = Divider
-
-local UIGradient = Instance.new("UIGradient")
-UIGradient.Rotation = 90
-UIGradient.Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(27, 57, 73)),
-	ColorSequenceKeypoint.new(0.495, Color3.fromRGB(38, 81, 103)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(27, 57, 73))
-}
-UIGradient.Parent = Line
-
--- No example tabs here - they will be created dynamically
-
-local Divider = Instance.new("Frame")
-Divider.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Divider.AnchorPoint = Vector2.new(0.5, 0.5)
-Divider.BackgroundTransparency = 1
-Divider.Position = UDim2.new(0.5, 0, 0.5, 0)
-Divider.Name = "Divider_Logo" -- Special name for the logo divider
-Divider.Size = UDim2.new(0, 2, 0, 50)
-Divider.BorderSizePixel = 0
-Divider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Divider.LayoutOrder = 1 -- Set layout order for proper positioning
-Divider.Parent = Holder
-
-local Line = Instance.new("Frame")
-Line.AnchorPoint = Vector2.new(0.5, 0.5)
-Line.Name = "Line"
-Line.Position = UDim2.new(0.5, 0, 0.5, 0)
-Line.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Line.Size = UDim2.new(0.05263157933950424, 1, 0.30399537086486816, 1)
-Line.BorderSizePixel = 0
-Line.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Line.Parent = Divider
-
-local UIGradient = Instance.new("UIGradient")
-UIGradient.Rotation = 90
-UIGradient.Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(27, 57, 73)),
-	ColorSequenceKeypoint.new(0.495, Color3.fromRGB(38, 81, 103)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(27, 57, 73))
-}
-UIGradient.Parent = Line
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingLeft = UDim.new(0, 7)
-UIPadding.Parent = Holder
-
-local Search = Instance.new("Frame")
-Search.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Search.AnchorPoint = Vector2.new(1, 0.5)
-Search.BackgroundTransparency = 0.6499999761581421
-Search.Position = UDim2.new(1, -14, 0.5, 0)
-Search.Name = "Search"
-Search.Size = UDim2.new(0, 150, 0, 26)
-Search.BorderSizePixel = 0
-Search.BackgroundColor3 = Color3.fromRGB(15, 15, 17)
-Search.Parent = Header
-
-local RoundedSearch = Instance.new("UICorner")
-RoundedSearch.Name = "RoundedSearch"
-RoundedSearch.CornerRadius = UDim.new(0, 3)
-RoundedSearch.Parent = Search
-
-local Outline = Instance.new("UIStroke")
-Outline.Color = Color3.fromRGB(42, 42, 43)
-Outline.Name = "Outline"
-Outline.Parent = Search
-
-local Icon = Instance.new("ImageLabel")
-Icon.ImageColor3 = Color3.fromRGB(168, 168, 168)
-Icon.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Icon.Name = "Icon"
-Icon.AnchorPoint = Vector2.new(0, 0.5)
-Icon.Image = "rbxassetid://125430388526923"
-Icon.BackgroundTransparency = 1
-Icon.Position = UDim2.new(0, 5, 0.5, 0)
-
-Icon.Size = UDim2.new(0, 14, 0, 14)
-Icon.BorderSizePixel = 0
-Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Icon.Parent = Search
-
-local TextBox = Instance.new("TextBox")
-TextBox.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-TextBox.Size = UDim2.new(0, 1, 0, 1)
-TextBox.TextColor3 = Color3.fromRGB(127, 127, 127)
-TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextBox.Text = ""
-TextBox.Position = UDim2.new(1, -87, 0.5, 0)
-TextBox.TextStrokeTransparency = 0
-TextBox.AnchorPoint = Vector2.new(1, 0.5)
-TextBox.BorderSizePixel = 0
-TextBox.BackgroundTransparency = 1
-TextBox.PlaceholderColor3 = Color3.fromRGB(127, 127, 127)
-TextBox.AutomaticSize = Enum.AutomaticSize.XY
-TextBox.PlaceholderText = "Search"
-TextBox.TextSize = 14
-TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextBox.Parent = Search
-
-local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(0, 3)
-UICorner.Parent = MainFrame
-
-local Page = Instance.new("Frame")
-Page.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Page.AnchorPoint = Vector2.new(0.5, 1)
-Page.BackgroundTransparency = 1
-Page.Position = UDim2.new(0.5, 0, 1, 0)
-Page.Name = "Page"
-Page.Size = UDim2.new(0, 560, 0, 438)
-Page.BorderSizePixel = 0
-Page.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Page.Parent = MainFrame
-
-local Container = Instance.new("ScrollingFrame")
-Container.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
-Container.Active = true
-Container.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Container.BackgroundTransparency = 1
-Container.Name = "Container"
-Container.Size = UDim2.new(0, 560, 0, 438)
-Container.BorderSizePixel = 0
-Container.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Container.Parent = Page
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.Wraps = true
-UIListLayout.Padding = UDim.new(0, 9)
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.FillDirection = Enum.FillDirection.Horizontal
-UIListLayout.Parent = Container
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingTop = UDim.new(0, 11)
-UIPadding.PaddingLeft = UDim.new(0, 10)
-UIPadding.Parent = Container
-
-local Section_Left = Instance.new("Frame")
-Section_Left.ClipsDescendants = true
-Section_Left.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Section_Left.Name = "Section_Left"
-Section_Left.BackgroundTransparency = 0.6499999761581421
-Section_Left.Position = UDim2.new(0.14868520200252533, 0, 0.4112521708011627, 0)
-Section_Left.Size = UDim2.new(0, 264, 0, 40)
-Section_Left.BorderSizePixel = 0
-Section_Left.AutomaticSize = Enum.AutomaticSize.Y
-Section_Left.BackgroundColor3 = Color3.fromRGB(15, 15, 17)
-Section_Left.Parent = Container
-
-local Header = Instance.new("Frame")
-Header.AnchorPoint = Vector2.new(0.5, 0)
-Header.Name = "Header"
-Header.Position = UDim2.new(0.5, 0, 0, 0)
-Header.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Header.Size = UDim2.new(0, 264, 0, 28)
-Header.BorderSizePixel = 0
-Header.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Header.Parent = Section_Left
-
-local Holder = Instance.new("Frame")
-Holder.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Holder.AnchorPoint = Vector2.new(0.5, 0)
-Holder.Name = "Holder"
-Holder.BackgroundTransparency = 1
-Holder.Position = UDim2.new(0.5, 0, 1, 0)
-Holder.Size = UDim2.new(0, 1, 0, 1)
-Holder.BorderSizePixel = 0
-Holder.AutomaticSize = Enum.AutomaticSize.XY
-Holder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Holder.Parent = Header
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Parent = Holder
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingBottom = UDim.new(0, 45)
-UIPadding.PaddingTop = UDim.new(0, 5)
-UIPadding.Parent = Holder
-
-local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(0, 6)
-UICorner.Parent = Header
-
-local Liner = Instance.new("Frame")
-Liner.AnchorPoint = Vector2.new(0.5, 1)
-Liner.Name = "Liner"
-Liner.Position = UDim2.new(0.5, 0, 1, 0)
-Liner.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Liner.Size = UDim2.new(1, 1, 0, 1)
-Liner.BorderSizePixel = 0
-Liner.BackgroundColor3 = Color3.fromRGB(21, 21, 25)
-Liner.Parent = Header
-
-local UIGradient = Instance.new("UIGradient")
-UIGradient.Rotation = 90
-UIGradient.Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(31, 31, 31)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(21, 21, 20))
-}
-UIGradient.Parent = Header
-
-local Liner = Instance.new("Frame")
-Liner.AnchorPoint = Vector2.new(0, 1)
-Liner.Name = "Liner"
-Liner.Position = UDim2.new(0, 0, 1, 0)
-Liner.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Liner.Size = UDim2.new(1, 1, 0, 2)
-Liner.BorderSizePixel = 0
-Liner.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Liner.Parent = Header
-
-local UIGradient = Instance.new("UIGradient")
-UIGradient.Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(27, 57, 73)),
-	ColorSequenceKeypoint.new(0.495, Color3.fromRGB(38, 81, 103)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(27, 57, 73))
-}
-UIGradient.Parent = Liner
-
-local SectionName = Instance.new("TextLabel")
-SectionName.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-SectionName.TextColor3 = Color3.fromRGB(180, 180, 180)
-SectionName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SectionName.Text = "LeftSection"
-SectionName.Name = "SectionName"
-SectionName.TextStrokeTransparency = 0
-SectionName.AnchorPoint = Vector2.new(0, 0.5)
-SectionName.Size = UDim2.new(0, 1, 0, 1)
-SectionName.BackgroundTransparency = 1
-SectionName.Position = UDim2.new(0, 7, 0.5, -1)
-SectionName.BorderSizePixel = 0
-SectionName.AutomaticSize = Enum.AutomaticSize.XY
-SectionName.TextSize = 14
-SectionName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SectionName.Parent = Header
-
-local SubHolder = Instance.new("Frame")
-SubHolder.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SubHolder.AnchorPoint = Vector2.new(1, 0.5)
-SubHolder.Name = "SubHolder"
-SubHolder.BackgroundTransparency = 1
-SubHolder.Position = UDim2.new(1, 0, 0.5, 0)
-SubHolder.Size = UDim2.new(0, 140, 0, 27)
-SubHolder.BorderSizePixel = 0
-SubHolder.AutomaticSize = Enum.AutomaticSize.XY
-SubHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SubHolder.Parent = Header
-
-local SectionSubTab = Instance.new("Frame")
-SectionSubTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SectionSubTab.Name = "SectionSubTab"
-SectionSubTab.BackgroundTransparency = 1
-SectionSubTab.Position = UDim2.new(0.478759765625, 0, 0, 0)
-SectionSubTab.Size = UDim2.new(0, 32, 0, 27)
-SectionSubTab.BorderSizePixel = 0
-SectionSubTab.AutomaticSize = Enum.AutomaticSize.X
-SectionSubTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SectionSubTab.Parent = SubHolder
-
-local SubtabName = Instance.new("TextLabel")
-SubtabName.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-SubtabName.TextColor3 = Color3.fromRGB(180, 180, 180)
-SubtabName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SubtabName.Text = "ActiveSubTab"
-SubtabName.Name = "SubtabName"
-SubtabName.TextStrokeTransparency = 0
-SubtabName.AnchorPoint = Vector2.new(0.5, 0.5)
-SubtabName.Size = UDim2.new(0, 1, 0, 1)
-SubtabName.BackgroundTransparency = 1
-SubtabName.Position = UDim2.new(0.5, 0, 0.5, 0)
-SubtabName.BorderSizePixel = 0
-SubtabName.AutomaticSize = Enum.AutomaticSize.XY
-SubtabName.TextSize = 14
-SubtabName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SubtabName.Parent = SectionSubTab
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Parent = SectionSubTab
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingTop = UDim.new(0, 6)
-UIPadding.Parent = SectionSubTab
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.FillDirection = Enum.FillDirection.Horizontal
-UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
-UIListLayout.Padding = UDim.new(0, 9)
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Parent = SubHolder
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingRight = UDim.new(0, 6)
-UIPadding.Parent = SubHolder
-
-local SectionSubTab = Instance.new("Frame")
-SectionSubTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SectionSubTab.Name = "SectionSubTab"
-SectionSubTab.BackgroundTransparency = 1
-SectionSubTab.Position = UDim2.new(0.478759765625, 0, 0, 0)
-SectionSubTab.Size = UDim2.new(0, 32, 0, 27)
-SectionSubTab.BorderSizePixel = 0
-SectionSubTab.AutomaticSize = Enum.AutomaticSize.X
-SectionSubTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SectionSubTab.Parent = SubHolder
-
-local SubtabName = Instance.new("TextLabel")
-SubtabName.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-SubtabName.TextColor3 = Color3.fromRGB(133, 133, 133)
-SubtabName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SubtabName.Text = "SubTab1"
-SubtabName.Name = "SubtabName"
-SubtabName.TextStrokeTransparency = 0
-SubtabName.AnchorPoint = Vector2.new(0.5, 0.5)
-SubtabName.Size = UDim2.new(0, 1, 0, 1)
-SubtabName.BackgroundTransparency = 1
-SubtabName.Position = UDim2.new(0.5, 0, 0.5, 0)
-SubtabName.BorderSizePixel = 0
-SubtabName.AutomaticSize = Enum.AutomaticSize.XY
-SubtabName.TextSize = 14
-SubtabName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SubtabName.Parent = SectionSubTab
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Parent = SectionSubTab
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingTop = UDim.new(0, 6)
-UIPadding.Parent = SectionSubTab
-
-local SectionSubTab = Instance.new("Frame")
-SectionSubTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SectionSubTab.Name = "SectionSubTab"
-SectionSubTab.BackgroundTransparency = 1
-SectionSubTab.Position = UDim2.new(0.478759765625, 0, 0, 0)
-SectionSubTab.Size = UDim2.new(0, 32, 0, 27)
-SectionSubTab.BorderSizePixel = 0
-SectionSubTab.AutomaticSize = Enum.AutomaticSize.X
-SectionSubTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SectionSubTab.Parent = SubHolder
-
-local SubtabName = Instance.new("TextLabel")
-SubtabName.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-SubtabName.TextColor3 = Color3.fromRGB(133, 133, 133)
-SubtabName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SubtabName.Text = "SubTab2"
-SubtabName.Name = "SubtabName"
-SubtabName.TextStrokeTransparency = 0
-SubtabName.AnchorPoint = Vector2.new(0.5, 0.5)
-SubtabName.Size = UDim2.new(0, 1, 0, 1)
-SubtabName.BackgroundTransparency = 1
-SubtabName.Position = UDim2.new(0.5, 0, 0.5, 0)
-SubtabName.BorderSizePixel = 0
-SubtabName.AutomaticSize = Enum.AutomaticSize.XY
-SubtabName.TextSize = 14
-SubtabName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SubtabName.Parent = SectionSubTab
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Parent = SectionSubTab
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingTop = UDim.new(0, 6)
-UIPadding.Parent = SectionSubTab
-
-local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(0, 3)
-UICorner.Parent = Section_Left
-
-local UIStroke = Instance.new("UIStroke")
-UIStroke.Color = Color3.fromRGB(43, 43, 43)
-UIStroke.Parent = Section_Left
-
-local Section_Right = Instance.new("Frame")
-Section_Right.ClipsDescendants = true
-Section_Right.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Section_Right.Name = "Section_Right"
-Section_Right.BackgroundTransparency = 0.6499999761581421
-Section_Right.Position = UDim2.new(0.14868520200252533, 0, 0.4112521708011627, 0)
-Section_Right.Size = UDim2.new(0, 264, 0, 40)
-Section_Right.BorderSizePixel = 0
-Section_Right.AutomaticSize = Enum.AutomaticSize.Y
-Section_Right.BackgroundColor3 = Color3.fromRGB(15, 15, 17)
-Section_Right.Parent = Container
-
-local Header = Instance.new("Frame")
-Header.AnchorPoint = Vector2.new(0.5, 0)
-Header.Name = "Header"
-Header.Position = UDim2.new(0.5, 0, 0, 0)
-Header.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Header.Size = UDim2.new(0, 264, 0, 28)
-Header.BorderSizePixel = 0
-Header.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Header.Parent = Section_Right
-
-local Holder = Instance.new("Frame")
-Holder.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Holder.AnchorPoint = Vector2.new(0.5, 0)
-Holder.Name = "Holder"
-Holder.BackgroundTransparency = 1
-Holder.Position = UDim2.new(0.5, 0, 1, 0)
-Holder.Size = UDim2.new(0, 1, 0, 1)
-Holder.BorderSizePixel = 0
-Holder.AutomaticSize = Enum.AutomaticSize.XY
-Holder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Holder.Parent = Header
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Parent = Holder
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingBottom = UDim.new(0, 45)
-UIPadding.PaddingTop = UDim.new(0, 5)
-UIPadding.Parent = Holder
-
-local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(0, 6)
-UICorner.Parent = Header
-
-local Liner = Instance.new("Frame")
-Liner.AnchorPoint = Vector2.new(0.5, 1)
-Liner.Name = "Liner"
-Liner.Position = UDim2.new(0.5, 0, 1, 0)
-Liner.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Liner.Size = UDim2.new(1, 1, 0, 1)
-Liner.BorderSizePixel = 0
-Liner.BackgroundColor3 = Color3.fromRGB(21, 21, 25)
-Liner.Parent = Header
-
-local UIGradient = Instance.new("UIGradient")
-UIGradient.Rotation = 90
-UIGradient.Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(31, 31, 31)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(21, 21, 20))
-}
-UIGradient.Parent = Header
-
-local Liner = Instance.new("Frame")
-Liner.AnchorPoint = Vector2.new(0, 1)
-Liner.Name = "Liner"
-Liner.Position = UDim2.new(0, 0, 1, 0)
-Liner.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Liner.Size = UDim2.new(1, 1, 0, 2)
-Liner.BorderSizePixel = 0
-Liner.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Liner.Parent = Header
-
-local UIGradient = Instance.new("UIGradient")
-UIGradient.Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(27, 57, 73)),
-	ColorSequenceKeypoint.new(0.495, Color3.fromRGB(38, 81, 103)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(27, 57, 73))
-}
-UIGradient.Parent = Liner
-
-local SectionName = Instance.new("TextLabel")
-SectionName.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-SectionName.TextColor3 = Color3.fromRGB(180, 180, 180)
-SectionName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SectionName.Text = "LeftSection"
-SectionName.Name = "SectionName"
-SectionName.TextStrokeTransparency = 0
-SectionName.AnchorPoint = Vector2.new(0, 0.5)
-SectionName.Size = UDim2.new(0, 1, 0, 1)
-SectionName.BackgroundTransparency = 1
-SectionName.Position = UDim2.new(0, 7, 0.5, -1)
-SectionName.BorderSizePixel = 0
-SectionName.AutomaticSize = Enum.AutomaticSize.XY
-SectionName.TextSize = 14
-SectionName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SectionName.Parent = Header
-
-local SubHolder = Instance.new("Frame")
-SubHolder.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SubHolder.AnchorPoint = Vector2.new(1, 0.5)
-SubHolder.Name = "SubHolder"
-SubHolder.BackgroundTransparency = 1
-SubHolder.Position = UDim2.new(1, 0, 0.5, 0)
-SubHolder.Size = UDim2.new(0, 140, 0, 27)
-SubHolder.BorderSizePixel = 0
-SubHolder.AutomaticSize = Enum.AutomaticSize.XY
-SubHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SubHolder.Parent = Header
-
-local SectionSubTab = Instance.new("Frame")
-SectionSubTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SectionSubTab.Name = "SectionSubTab"
-SectionSubTab.BackgroundTransparency = 1
-SectionSubTab.Position = UDim2.new(0.478759765625, 0, 0, 0)
-SectionSubTab.Size = UDim2.new(0, 32, 0, 27)
-SectionSubTab.BorderSizePixel = 0
-SectionSubTab.AutomaticSize = Enum.AutomaticSize.X
-SectionSubTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SectionSubTab.Parent = SubHolder
-
-local SubtabName = Instance.new("TextLabel")
-SubtabName.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-SubtabName.TextColor3 = Color3.fromRGB(180, 180, 180)
-SubtabName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SubtabName.Text = "ActiveSubTab"
-SubtabName.Name = "SubtabName"
-SubtabName.TextStrokeTransparency = 0
-SubtabName.AnchorPoint = Vector2.new(0.5, 0.5)
-SubtabName.Size = UDim2.new(0, 1, 0, 1)
-SubtabName.BackgroundTransparency = 1
-SubtabName.Position = UDim2.new(0.5, 0, 0.5, 0)
-SubtabName.BorderSizePixel = 0
-SubtabName.AutomaticSize = Enum.AutomaticSize.XY
-SubtabName.TextSize = 14
-SubtabName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SubtabName.Parent = SectionSubTab
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Parent = SectionSubTab
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingTop = UDim.new(0, 6)
-UIPadding.Parent = SectionSubTab
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.FillDirection = Enum.FillDirection.Horizontal
-UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
-UIListLayout.Padding = UDim.new(0, 9)
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Parent = SubHolder
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingRight = UDim.new(0, 6)
-UIPadding.Parent = SubHolder
-
-local SectionSubTab = Instance.new("Frame")
-SectionSubTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SectionSubTab.Name = "SectionSubTab"
-SectionSubTab.BackgroundTransparency = 1
-SectionSubTab.Position = UDim2.new(0.478759765625, 0, 0, 0)
-SectionSubTab.Size = UDim2.new(0, 32, 0, 27)
-SectionSubTab.BorderSizePixel = 0
-SectionSubTab.AutomaticSize = Enum.AutomaticSize.X
-SectionSubTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SectionSubTab.Parent = SubHolder
-
-local SubtabName = Instance.new("TextLabel")
-SubtabName.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-SubtabName.TextColor3 = Color3.fromRGB(133, 133, 133)
-SubtabName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SubtabName.Text = "SubTab1"
-SubtabName.Name = "SubtabName"
-SubtabName.TextStrokeTransparency = 0
-SubtabName.AnchorPoint = Vector2.new(0.5, 0.5)
-SubtabName.Size = UDim2.new(0, 1, 0, 1)
-SubtabName.BackgroundTransparency = 1
-SubtabName.Position = UDim2.new(0.5, 0, 0.5, 0)
-SubtabName.BorderSizePixel = 0
-SubtabName.AutomaticSize = Enum.AutomaticSize.XY
-SubtabName.TextSize = 14
-SubtabName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SubtabName.Parent = SectionSubTab
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Parent = SectionSubTab
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingTop = UDim.new(0, 6)
-UIPadding.Parent = SectionSubTab
-
-local SectionSubTab = Instance.new("Frame")
-SectionSubTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SectionSubTab.Name = "SectionSubTab"
-SectionSubTab.BackgroundTransparency = 1
-SectionSubTab.Position = UDim2.new(0.478759765625, 0, 0, 0)
-SectionSubTab.Size = UDim2.new(0, 32, 0, 27)
-SectionSubTab.BorderSizePixel = 0
-SectionSubTab.AutomaticSize = Enum.AutomaticSize.X
-SectionSubTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SectionSubTab.Parent = SubHolder
-
-local SubtabName = Instance.new("TextLabel")
-SubtabName.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-SubtabName.TextColor3 = Color3.fromRGB(133, 133, 133)
-SubtabName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SubtabName.Text = "SubTab2"
-SubtabName.Name = "SubtabName"
-SubtabName.TextStrokeTransparency = 0
-SubtabName.AnchorPoint = Vector2.new(0.5, 0.5)
-SubtabName.Size = UDim2.new(0, 1, 0, 1)
-SubtabName.BackgroundTransparency = 1
-SubtabName.Position = UDim2.new(0.5, 0, 0.5, 0)
-SubtabName.BorderSizePixel = 0
-SubtabName.AutomaticSize = Enum.AutomaticSize.XY
-SubtabName.TextSize = 14
-SubtabName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SubtabName.Parent = SectionSubTab
-
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Parent = SectionSubTab
-
-local UIPadding = Instance.new("UIPadding")
-UIPadding.PaddingTop = UDim.new(0, 6)
-UIPadding.Parent = SectionSubTab
-
-local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(0, 3)
-UICorner.Parent = Section_Right
-
-local UIStroke = Instance.new("UIStroke")
-UIStroke.Color = Color3.fromRGB(43, 43, 43)
-UIStroke.Parent = Section_Right
-
-local BG_TEXTURE = Instance.new("ImageLabel")
-BG_TEXTURE.ScaleType = Enum.ScaleType.Slice
-BG_TEXTURE.ImageTransparency = 0.9800000190734863
-BG_TEXTURE.BorderColor3 = Color3.fromRGB(0, 0, 0)
-BG_TEXTURE.Name = "BG_TEXTURE"
-BG_TEXTURE.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-BG_TEXTURE.Image = "rbxassetid://136562337748317"
-BG_TEXTURE.BackgroundTransparency = 1
-BG_TEXTURE.Size = UDim2.new(1, 1, 1, 1)
-
-BG_TEXTURE.ZIndex = -5
-BG_TEXTURE.BorderSizePixel = 0
-BG_TEXTURE.SliceCenter = Rect.new(Vector2.new(238, 66), Vector2.new(238, 413))
-BG_TEXTURE.Parent = MainFrame
-
-local Outline = Instance.new("UIStroke")
-Outline.Color = Color3.fromRGB(62, 119, 150)
-Outline.Name = "Outline"
-Outline.Parent = MainFrame
+    local MainFrame = Instance.new("Frame")
+    MainFrame.ClipsDescendants = true
+    MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+    MainFrame.Name = "MainFrame"
+    MainFrame.Position = UDim2.new(0.26230770349502563, 0, 0.5, 0)
+    MainFrame.Size = UDim2.new(0, 560, 0, 488)
+    MainFrame.BorderSizePixel = 0
+    MainFrame.BackgroundColor3 = Color3.fromRGB(12, 12, 12)
+    MainFrame.Parent = ScreenGui
+
+    local Header = Instance.new("Frame")
+    Header.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Header.AnchorPoint = Vector2.new(0.5, 0)
+    Header.Name = "Header"
+    Header.Position = UDim2.new(0.5, 0, 0, 0)
+    Header.Size = UDim2.new(0, 560, 0, 50)
+    Header.ZIndex = 15
+    Header.BorderSizePixel = 0
+    Header.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Header.Parent = MainFrame
+
+    local UICorner = Instance.new("UICorner")
+    UICorner.CornerRadius = UDim.new(0, 3)
+    UICorner.Parent = Header
+
+    local UIGradient = Instance.new("UIGradient")
+    UIGradient.Rotation = 90
+    UIGradient.Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(31, 31, 31)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(20, 20, 20))
+    }
+    UIGradient.Parent = Header
+
+    local Liner = Instance.new("Frame")
+    Liner.AnchorPoint = Vector2.new(0, 1)
+    Liner.Name = "Liner"
+    Liner.Position = UDim2.new(0, 0, 1, 0)
+    Liner.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Liner.Size = UDim2.new(1, 1, 0, 2)
+    Liner.BorderSizePixel = 0
+    Liner.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Liner.Parent = Header
+
+    local UIGradient = Instance.new("UIGradient")
+    UIGradient.Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(27, 57, 73)),
+        ColorSequenceKeypoint.new(0.495, Color3.fromRGB(38, 81, 103)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(27, 57, 73))
+    }
+    UIGradient.Parent = Liner
+
+    local Holder = Instance.new("Frame")
+    Holder.BackgroundTransparency = 1
+    Holder.Name = "Holder"
+    Holder.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Holder.Size = UDim2.new(0, 332, 0, 50)
+    Holder.BorderSizePixel = 0
+    Holder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Holder.Parent = Header
+
+    local UIListLayout = Instance.new("UIListLayout")
+    UIListLayout.Padding = UDim.new(0, 6)
+    UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    UIListLayout.FillDirection = Enum.FillDirection.Horizontal
+    UIListLayout.Parent = Holder
+
+    local LibaryLogo = Instance.new("Frame")
+    LibaryLogo.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    LibaryLogo.AnchorPoint = Vector2.new(0, 0.5)
+    LibaryLogo.BackgroundTransparency = 1
+    LibaryLogo.Position = UDim2.new(0, 0, 0.47999998927116394, 0)
+    LibaryLogo.Name = "LibaryLogo"
+    LibaryLogo.Size = UDim2.new(0, 32, 0, 48)
+    LibaryLogo.BorderSizePixel = 0
+    LibaryLogo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    LibaryLogo.Parent = Holder
+
+    local Logo = Instance.new("ImageLabel")
+    Logo.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Logo.Name = "Logo"
+    Logo.AnchorPoint = Vector2.new(0.5, 0.5)
+    Logo.Image = "rbxassetid://91936638224609"
+    Logo.BackgroundTransparency = 1
+    Logo.Position = UDim2.new(0.5, 0, 0.5, 0)
+    Logo.Size = UDim2.new(0, 32, 0, 32)
+    Logo.BorderSizePixel = 0
+    Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Logo.Parent = LibaryLogo
+
+    local Divider = Instance.new("Frame")
+    Divider.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Divider.AnchorPoint = Vector2.new(0.5, 0.5)
+    Divider.BackgroundTransparency = 1
+    Divider.Position = UDim2.new(0.5, 0, 0.5, 0)
+    Divider.Name = "Divider_Logo" -- Special name for the logo divider
+    Divider.Size = UDim2.new(0, 2, 0, 50)
+    Divider.BorderSizePixel = 0
+    Divider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Divider.LayoutOrder = 1 -- Set layout order for proper positioning
+    Divider.Parent = Holder
+
+    local Line = Instance.new("Frame")
+    Line.AnchorPoint = Vector2.new(0.5, 0.5)
+    Line.Name = "Line"
+    Line.Position = UDim2.new(0.5, 0, 0.5, 0)
+    Line.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Line.Size = UDim2.new(0.05263157933950424, 1, 0.30399537086486816, 1)
+    Line.BorderSizePixel = 0
+    Line.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Line.Parent = Divider
+
+    local UIGradient = Instance.new("UIGradient")
+    UIGradient.Rotation = 90
+    UIGradient.Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(27, 57, 73)),
+        ColorSequenceKeypoint.new(0.495, Color3.fromRGB(38, 81, 103)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(27, 57, 73))
+    }
+    UIGradient.Parent = Line
+
+    local UIPadding = Instance.new("UIPadding")
+    UIPadding.PaddingLeft = UDim.new(0, 7)
+    UIPadding.Parent = Holder
+
+    local Search = Instance.new("Frame")
+    Search.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Search.AnchorPoint = Vector2.new(1, 0.5)
+    Search.BackgroundTransparency = 0.6499999761581421
+    Search.Position = UDim2.new(1, -14, 0.5, 0)
+    Search.Name = "Search"
+    Search.Size = UDim2.new(0, 150, 0, 26)
+    Search.BorderSizePixel = 0
+    Search.BackgroundColor3 = Color3.fromRGB(15, 15, 17)
+    Search.Parent = Header
+
+    local RoundedSearch = Instance.new("UICorner")
+    RoundedSearch.Name = "RoundedSearch"
+    RoundedSearch.CornerRadius = UDim.new(0, 3)
+    RoundedSearch.Parent = Search
+
+    local Outline = Instance.new("UIStroke")
+    Outline.Color = Color3.fromRGB(42, 42, 43)
+    Outline.Name = "Outline"
+    Outline.Parent = Search
+
+    local Icon = Instance.new("ImageLabel")
+    Icon.ImageColor3 = Color3.fromRGB(168, 168, 168)
+    Icon.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Icon.Name = "Icon"
+    Icon.AnchorPoint = Vector2.new(0, 0.5)
+    Icon.Image = "rbxassetid://125430388526923"
+    Icon.BackgroundTransparency = 1
+    Icon.Position = UDim2.new(0, 5, 0.5, 0)
+    Icon.Size = UDim2.new(0, 14, 0, 14)
+    Icon.BorderSizePixel = 0
+    Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Icon.Parent = Search
+
+    local TextBox = Instance.new("TextBox")
+    TextBox.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    TextBox.Size = UDim2.new(0, 1, 0, 1)
+    TextBox.TextColor3 = Color3.fromRGB(127, 127, 127)
+    TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    TextBox.Text = ""
+    TextBox.Position = UDim2.new(1, -87, 0.5, 0)
+    TextBox.TextStrokeTransparency = 0
+    TextBox.AnchorPoint = Vector2.new(1, 0.5)
+    TextBox.BorderSizePixel = 0
+    TextBox.BackgroundTransparency = 1
+    TextBox.PlaceholderColor3 = Color3.fromRGB(127, 127, 127)
+    TextBox.AutomaticSize = Enum.AutomaticSize.XY
+    TextBox.PlaceholderText = "Search"
+    TextBox.TextSize = 14
+    TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextBox.Parent = Search
+
+    local UICorner = Instance.new("UICorner")
+    UICorner.CornerRadius = UDim.new(0, 3)
+    UICorner.Parent = MainFrame
+
+    local Page = Instance.new("Frame")
+    Page.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Page.AnchorPoint = Vector2.new(0.5, 1)
+    Page.BackgroundTransparency = 1
+    Page.Position = UDim2.new(0.5, 0, 1, 0)
+    Page.Name = "Page"
+    Page.Size = UDim2.new(0, 560, 0, 438)
+    Page.BorderSizePixel = 0
+    Page.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Page.Parent = MainFrame
+
+    local Container = Instance.new("ScrollingFrame")
+    Container.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
+    Container.Active = true
+    Container.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Container.BackgroundTransparency = 1
+    Container.Name = "Container"
+    Container.Size = UDim2.new(0, 560, 0, 438)
+    Container.BorderSizePixel = 0
+    Container.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Container.Parent = Page
+
+    local UIListLayout = Instance.new("UIListLayout")
+    UIListLayout.Wraps = true
+    UIListLayout.Padding = UDim.new(0, 9)
+    UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    UIListLayout.FillDirection = Enum.FillDirection.Horizontal
+    UIListLayout.Parent = Container
+
+    local UIPadding = Instance.new("UIPadding")
+    UIPadding.PaddingTop = UDim.new(0, 11)
+    UIPadding.PaddingLeft = UDim.new(0, 10)
+    UIPadding.Parent = Container
+
+    local BG_TEXTURE = Instance.new("ImageLabel")
+    BG_TEXTURE.ScaleType = Enum.ScaleType.Slice
+    BG_TEXTURE.ImageTransparency = 0.9800000190734863
+    BG_TEXTURE.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    BG_TEXTURE.Name = "BG_TEXTURE"
+    BG_TEXTURE.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    BG_TEXTURE.Image = "rbxassetid://136562337748317"
+    BG_TEXTURE.BackgroundTransparency = 1
+    BG_TEXTURE.Size = UDim2.new(1, 1, 1, 1)
+    BG_TEXTURE.ZIndex = -5
+    BG_TEXTURE.BorderSizePixel = 0
+    BG_TEXTURE.SliceCenter = Rect.new(Vector2.new(238, 66), Vector2.new(238, 413))
+    BG_TEXTURE.Parent = MainFrame
+
+    local Outline = Instance.new("UIStroke")
+    Outline.Color = Color3.fromRGB(62, 119, 150)
+    Outline.Name = "Outline"
+    Outline.Parent = MainFrame
 
     return {
         ScreenGui = ScreenGui,
         MainFrame = MainFrame,
         Header = Header,
         Holder = Holder,
+        Page = Page,
         Container = Container
     }
 end
@@ -854,6 +341,7 @@ function library:CreateWindow(options)
         DividerFrame.Size = UDim2.new(0, 2, 0, 30)
         DividerFrame.Position = UDim2.new(0, 40 + (dividerCount * 90), 0, 10)
         DividerFrame.BackgroundColor3 = library.config.colors.accent
+        DividerFrame.BackgroundTransparency = 0.5
         DividerFrame.BorderSizePixel = 0
         DividerFrame.ZIndex = 15
         DividerFrame.Parent = library.gui.Header
@@ -1029,361 +517,37 @@ function library:CreateWindow(options)
         return tabData
     end
     
-    -- SelectTab Function
-    function library:SelectTab(tabName)
-        for _, tab in pairs(tabs) do
-            if tab.name == tabName then
-                -- Show this tab container
-                if tab.container then
-                    tab.container.Visible = true
-                end
-                
-                -- Highlight this tab
-                if tab.button then
-                    tab.button.BackgroundColor3 = library.config.colors.accent
-                end
-            else
-                -- Hide other tab containers
-                if tab.container then
-                    tab.container.Visible = false
-                end
-                
-                -- Dim other tabs
-                if tab.button then
-                    tab.button.BackgroundColor3 = library.config.colors.accent:Lerp(Color3.fromRGB(0, 0, 0), 0.7)
-                end
-            end
-        end
-        
-        -- Update current tab
-        currentTab = tabName
-    end
-    
-    -- Return the library
-    return library
-            Section.BorderColor3 = Color3.fromRGB(0, 0, 0)
-            Section.Name = sectionName.."_Section"
-            Section.BackgroundTransparency = 0.6499999761581421
-            Section.Size = UDim2.new(0, 264, 0, 40)
-            Section.BorderSizePixel = 0
-            Section.AutomaticSize = Enum.AutomaticSize.Y
-            Section.BackgroundColor3 = library.config.colors.section
-            Section.Parent = TabContainer
-            
-            local UICorner = Instance.new("UICorner")
-            UICorner.CornerRadius = UDim.new(0, 3)
-            UICorner.Parent = Section
-            
-            local UIStroke = Instance.new("UIStroke")
-            UIStroke.Color = Color3.fromRGB(43, 43, 43)
-            UIStroke.Parent = Section
-            
-            -- Create Section Header
-            local Header = Instance.new("Frame")
-            Header.AnchorPoint = Vector2.new(0.5, 0)
-            Header.Name = "Header"
-            Header.Position = UDim2.new(0.5, 0, 0, 0)
-            Header.BorderColor3 = Color3.fromRGB(0, 0, 0)
-            Header.Size = UDim2.new(0, 264, 0, 28)
-            Header.BorderSizePixel = 0
-            Header.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            Header.Parent = Section
-            
-            local UICorner = Instance.new("UICorner")
-            UICorner.CornerRadius = UDim.new(0, 6)
-            UICorner.Parent = Header
-            
-            local UIGradient = Instance.new("UIGradient")
-            UIGradient.Rotation = 90
-            UIGradient.Color = ColorSequence.new{
-                ColorSequenceKeypoint.new(0, Color3.fromRGB(31, 31, 31)),
-                ColorSequenceKeypoint.new(1, Color3.fromRGB(21, 21, 20))
-            }
-            UIGradient.Parent = Header
-            
-            local Liner = Instance.new("Frame")
-            Liner.AnchorPoint = Vector2.new(0, 1)
-            Liner.Name = "Liner"
-            Liner.Position = UDim2.new(0, 0, 1, 0)
-            Liner.BorderColor3 = Color3.fromRGB(0, 0, 0)
-            Liner.Size = UDim2.new(1, 1, 0, 2)
-            Liner.BorderSizePixel = 0
-            Liner.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            Liner.Parent = Header
-            
-            local UIGradient = Instance.new("UIGradient")
-            UIGradient.Color = ColorSequence.new{
-                ColorSequenceKeypoint.new(0, library.config.colors.divider[1]),
-                ColorSequenceKeypoint.new(0.495, library.config.colors.divider[2]),
-                ColorSequenceKeypoint.new(1, library.config.colors.divider[3])
-            }
-            UIGradient.Parent = Liner
-            
-            local SectionTitle = Instance.new("TextLabel")
-            SectionTitle.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-            SectionTitle.TextColor3 = Color3.fromRGB(180, 180, 180)
-            SectionTitle.BorderColor3 = Color3.fromRGB(0, 0, 0)
-            SectionTitle.Text = sectionName
-            SectionTitle.Name = "SectionName"
-            SectionTitle.TextStrokeTransparency = 0
-            SectionTitle.AnchorPoint = Vector2.new(0, 0.5)
-            SectionTitle.Size = UDim2.new(0, 1, 0, 1)
-            SectionTitle.BackgroundTransparency = 1
-            SectionTitle.Position = UDim2.new(0, 7, 0.5, -1)
-            SectionTitle.BorderSizePixel = 0
-            SectionTitle.AutomaticSize = Enum.AutomaticSize.XY
-            SectionTitle.TextSize = library.config.textSize
-            SectionTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            SectionTitle.Parent = Header
-            
-            -- Create Section Content Holder
-            local Holder = Instance.new("Frame")
-            Holder.BorderColor3 = Color3.fromRGB(0, 0, 0)
-            Holder.AnchorPoint = Vector2.new(0.5, 0)
-            Holder.Name = "Holder"
-            Holder.BackgroundTransparency = 1
-            Holder.Position = UDim2.new(0.5, 0, 1, 0)
-            Holder.Size = UDim2.new(0, 1, 0, 1)
-            Holder.BorderSizePixel = 0
-            Holder.AutomaticSize = Enum.AutomaticSize.XY
-            Holder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            Holder.Parent = Header
-            
-            local UIListLayout = Instance.new("UIListLayout")
-            UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-            UIListLayout.Parent = Holder
-            
-            local UIPadding = Instance.new("UIPadding")
-            UIPadding.PaddingBottom = UDim.new(0, 10)
-            UIPadding.PaddingTop = UDim.new(0, 5)
-            UIPadding.Parent = Holder
-            
-            -- Create SubTabs if specified
-            if #subTabs > 0 then
-                -- Create SubHolder for the tabs themselves
-                local SubHolder = Instance.new("Frame")
-                SubHolder.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                SubHolder.AnchorPoint = Vector2.new(1, 0.5)
-                SubHolder.Name = "SubHolder"
-                SubHolder.BackgroundTransparency = 1
-                SubHolder.Position = UDim2.new(1, 0, 0.5, 0)
-                SubHolder.Size = UDim2.new(0, 140, 0, 27)
-                SubHolder.BorderSizePixel = 0
-                SubHolder.AutomaticSize = Enum.AutomaticSize.XY
-                SubHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                SubHolder.Parent = Header
-                
-                local UIListLayout = Instance.new("UIListLayout")
-                UIListLayout.FillDirection = Enum.FillDirection.Horizontal
-                UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
-                UIListLayout.Padding = UDim.new(0, 9)
-                UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-                UIListLayout.Parent = SubHolder
-                
-                local UIPadding = Instance.new("UIPadding")
-                UIPadding.PaddingRight = UDim.new(0, 6)
-                UIPadding.Parent = SubHolder
-                
-                -- Create a container for all subtab content
-                local SubTabsContainer = Instance.new("Frame")
-                SubTabsContainer.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                SubTabsContainer.Name = "SubTabsContainer"
-                SubTabsContainer.BackgroundTransparency = 1
-                SubTabsContainer.Size = UDim2.new(1, 0, 0, 0)
-                SubTabsContainer.BorderSizePixel = 0
-                SubTabsContainer.AutomaticSize = Enum.AutomaticSize.Y
-                SubTabsContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                SubTabsContainer.Parent = Holder
-                
-                -- Create SubTab holders
-                for i, subTabName in ipairs(subTabs) do
-                    local isActive = (i == 1)
-                    
-                    -- Create the subtab button in the SubHolder
-                    local SectionSubTab = Instance.new("Frame")
-                    SectionSubTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                    SectionSubTab.Name = "SectionSubTab"
-                    SectionSubTab.BackgroundTransparency = 1
-                    SectionSubTab.Size = UDim2.new(0, 32, 0, 27)
-                    SectionSubTab.BorderSizePixel = 0
-                    SectionSubTab.AutomaticSize = Enum.AutomaticSize.X
-                    SectionSubTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                    SectionSubTab.Parent = SubHolder
-                    
-                    local SubtabName = Instance.new("TextLabel")
-                    SubtabName.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-                    SubtabName.TextColor3 = isActive and Color3.fromRGB(180, 180, 180) or Color3.fromRGB(133, 133, 133)
-                    SubtabName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                    SubtabName.Text = subTabName
-                    SubtabName.Name = "SubtabName"
-                    SubtabName.TextStrokeTransparency = 0
-                    SubtabName.AnchorPoint = Vector2.new(0.5, 0.5)
-                    SubtabName.Size = UDim2.new(0, 1, 0, 1)
-                    SubtabName.BackgroundTransparency = 1
-                    SubtabName.Position = UDim2.new(0.5, 0, 0.5, 0)
-                    SubtabName.BorderSizePixel = 0
-                    SubtabName.AutomaticSize = Enum.AutomaticSize.XY
-                    SubtabName.TextSize = library.config.textSize
-                    SubtabName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                    SubtabName.Parent = SectionSubTab
-                    
-                    local UIListLayout = Instance.new("UIListLayout")
-                    UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-                    UIListLayout.Parent = SectionSubTab
-                    
-                    local UIPadding = Instance.new("UIPadding")
-                    UIPadding.PaddingTop = UDim.new(0, 6)
-                    UIPadding.Parent = SectionSubTab
-                    
-                    -- Create the content container for this subtab
-                    local SubTabContent = Instance.new("Frame")
-                    SubTabContent.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                    SubTabContent.Name = subTabName .. "Content"
-                    SubTabContent.BackgroundTransparency = 1
-                    SubTabContent.Size = UDim2.new(1, 0, 0, 0)
-                    SubTabContent.BorderSizePixel = 0
-                    SubTabContent.AutomaticSize = Enum.AutomaticSize.Y
-                    SubTabContent.Visible = isActive
-                    SubTabContent.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                    SubTabContent.Parent = SubTabsContainer
-                    
-                    local UIListLayout = Instance.new("UIListLayout")
-                    UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-                    UIListLayout.Parent = SubTabContent
-                    
-                    -- SubTab click functionality
-                    SectionSubTab.InputBegan:Connect(function(input)
-                        if input.UserInputType == Enum.UserInputType.MouseButton1 then
-                            -- Hide all subtab content
-                            for _, child in pairs(SubTabsContainer:GetChildren()) do
-                                if child:IsA("Frame") and child.Name:find("Content") then
-                                    child.Visible = false
-                                end
-                            end
-                            
-                            -- Show this subtab content
-                            SubTabContent.Visible = true
-                            
-                            -- Update colors of tab buttons
-                            for _, otherSubTab in pairs(SubHolder:GetChildren()) do
-                                if otherSubTab:IsA("Frame") and otherSubTab.Name == "SectionSubTab" then
-                                    local label = otherSubTab:FindFirstChild("SubtabName")
-                                    if label then
-                                        label.TextColor3 = Color3.fromRGB(133, 133, 133)
-                                    end
-                                end
-                            end
-                            SubtabName.TextColor3 = Color3.fromRGB(180, 180, 180)
-                        end
-                    end)
-                    
-                    -- Create the subtab data with element creation functions
-                    local subTabData = {
-                        CreateToggle = function(options) 
-                            -- Toggle implementation
-                            return {}
-                        end,
-                        CreateSlider = function(options) 
-                            -- Slider implementation
-                            return {}
-                        end,
-                        CreateDropdown = function(options) 
-                            -- Dropdown implementation
-                            return {}
-                        end,
-                        CreateButton = function(options) 
-                            -- Button implementation
-                            return {}
-                        end,
-                        CreateLabel = function(options) 
-                            -- Label implementation
-                            return {}
-                        end,
-                        CreateTextInput = function(options) 
-                            -- TextInput implementation
-                            return {}
-                        end,
-                        CreateKeybind = function(options) 
-                            -- Keybind implementation
-                            return {}
-                        end,
-                        CreateColorpicker = function(options) 
-                            -- Colorpicker implementation
-                            return {}
-                        end,
-                        AddColorToggle = function(name, default, callback) 
-                            -- ColorToggle implementation
-                            return {}
-                        end,
-                        _frame = SubTabContent -- Store reference to the frame
-                    }
-                    
-                    -- Store the subtab data
-                    subTabsData[subTabName] = subTabData
-                end
-            else
-                -- If no subtabs, create a default content holder
-                local DefaultContent = Instance.new("Frame")
-                DefaultContent.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                DefaultContent.Name = "DefaultContent"
-                DefaultContent.BackgroundTransparency = 1
-                DefaultContent.Size = UDim2.new(1, 0, 0, 0)
-                DefaultContent.BorderSizePixel = 0
-                DefaultContent.AutomaticSize = Enum.AutomaticSize.Y
-                DefaultContent.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                DefaultContent.Parent = Holder
-                
-                local UIListLayout = Instance.new("UIListLayout")
-                UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-                UIListLayout.Parent = DefaultContent
-            end
-            
-            -- Add section to sections table
-            sections[sectionName] = {
-                frame = Section,
-                holder = Holder
-            }
-            
-            -- Add subtabs to the section data if they exist
-            if #subTabs > 0 then
-                for name, data in pairs(subTabsData) do
-                    sectionData[name] = data
-                end
-            end
-            
-            return sectionData
-        end
-        
-        tabs[tabIndex] = {
-            name = name,
-            tabHolder = TabHolder,
-            tabName = TabName,
-            tabContainer = TabContainer,
-            liner = Liner
-        }
-        
-        return tabData
-    end
-    
     return window
 end
 
--- Select Tab Function
+-- SelectTab Function
 function library:SelectTab(tabName)
     for _, tab in pairs(tabs) do
         if tab.name == tabName then
-            -- Activate this tab
-            tab.tabName.TextColor3 = library.config.colors.text
-            tab.liner.Visible = true
-            tab.tabContainer.Visible = true
-            currentTab = tab
+            -- Show this tab container
+            if tab.container then
+                tab.container.Visible = true
+            end
+            
+            -- Highlight this tab
+            if tab.button then
+                tab.button.BackgroundColor3 = library.config.colors.accent
+            end
         else
-            -- Deactivate other tabs
-            tab.tabName.TextColor3 = library.config.colors.textDimmed
-            tab.liner.Visible = false
-            tab.tabContainer.Visible = false
+            -- Hide other tab containers
+            if tab.container then
+                tab.container.Visible = false
+            end
+            
+            -- Dim other tabs
+            if tab.button then
+                tab.button.BackgroundColor3 = library.config.colors.accent:Lerp(Color3.fromRGB(0, 0, 0), 0.7)
+            end
         end
     end
+    
+    -- Update current tab
+    currentTab = tabName
 end
 
 -- Set Accent Color Function
@@ -1397,7 +561,7 @@ function library:SetAccentColor(color)
     
     -- Update all UI elements with accent color
     -- This would need to update all gradients, liners, etc.
- end
+end
 
 -- Keybind List Function
 function library:KeybindList()
